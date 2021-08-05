@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue - v2</title>
+</head>
+<body>
+    <div id="app"> 
+        <h1 >{{ title }}</h1>
+        <br>
+        <br>
+        <p>{{ titleUm }}</p>
+        <input type="text" v-model="titleUm">
+        <br>
+        <br>
+        <p>{{ titleDois }}</p>
+        <input  type="text" 
+                    v-bind:value="titleDois"
+                    v-on:input="titleDois = $event.target.value">
+
+        <p>
+            v-model, é a ligação entre template e JavaScript ou JavaScript e template em direções
+            opostas, indiferente do sentido.
+        </p>
+
+
+        <p>
+            v-bind, é a ligação entre o JavaScript e o tempalte em direção única.
+        </p>
+    </div>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    title: "Estudo de Tow-way-binding - usando vuejs",
+                    titleUm: "Estou usando o v-model",
+                    titleDois: "Estou usando o v-bind",
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue -v2</title>
+</head>
+<body>
+    <div id="app">  
+        <p butterfly-bind="test">{{title}}</p>
+    </div>
+
+    <!-- 
+        Digite no console do navegador
+        document.querySelector("[butterfly-bind]").getAttribute('butterfly-bind')
+        para obter o valor do atributo
+
+        <p butterfly-bind="test">{{title}}</p>
+        Output: test
+     -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    title: "eeeeee",
+                }
+            },
+        })
+    </script>
+</body>
+</html>
