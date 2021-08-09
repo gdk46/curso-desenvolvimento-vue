@@ -6,6 +6,8 @@
         <p>Nome do usuário dinâmico: <strong>{{ nomeDinamico }}</strong></p>
         <p>Nome invertido: <strong>{{ inverterNome() }}</strong></p>
         <p>Props com valor padrao: <strong>{{ propsComValorPadrao }}</strong></p>
+        <button @click="reiniciarNome">Reiniciar Nome</button>
+        <button @click="reiniciarFn()">Reiniciar Nome (Callback)</button>
     </div>
 </template>
 
@@ -21,11 +23,17 @@ export default {
             type: String,
             default: "teste"
         },
-        nomeDinamico: String
+        nomeDinamico: String,
+        reiniciarFn: Function,
     },
     methods: {
         inverterNome() {
             return this.nomeDinamico.split('').reverse().join('')
+        },
+
+        reiniciarNome(){
+            this.nomeDinamico = "Gleisson neves";
+            this.$emit('nomeReiniciado', this.nomeDinamico);
         }
     },
 }

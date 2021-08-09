@@ -3,9 +3,15 @@
         <h1>Componente Usuário</h1>
         <p>Esse é um componente muito legal!</p>
         <hr>
+        <p>{{ meuNome }}</p>
         <button @click="alterarNome">Alterar nome</button>
         <div class="componentes">
-            <app-usuario-info nomeEstatico="Test" :nomeDinamico="meuNome"/>
+            <app-usuario-info
+                nomeEstatico="Test"
+                :nomeDinamico="meuNome"
+                @nomeReiniciado="meuNome = $event"
+                :reiniciarFn="reiniciarNome"
+            />
             <app-usuario-editar/>
         </div>
     </div>
@@ -19,12 +25,16 @@ export default {
     components: { AppUsuarioInfo, AppUsuarioEditar },
     data() {
         return {
-            meuNome: "Gleisson neves"            
+            meuNome: "Gleisson neves"
         }
     },
     methods: {
         alterarNome() {
             this.meuNome = "Agora meu nome é Gleisson"
+        },
+
+        reiniciarNome() {
+            this.meuNome = "Gleisson neves"
         }
     },
 }
