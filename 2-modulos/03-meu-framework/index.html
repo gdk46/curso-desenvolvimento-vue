@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue -v2</title>
+</head>
+<body>
+    <div id="app">
+        {{ nome }} {{ sobrenome }}
+        {{ 100 - 55 }} {{ Math.pow(2, 3) }}
+    </div>
+
+    <script>
+        function meuFramework(params) {
+            this.$el = document.querySelector(params.el);
+            this.$data = params.data;
+
+            for (const atr in this.$data) {
+                Object.defineProperty(this, atr, {
+                    get: () => {
+                        return this.$data[atr]
+                    },
+                    set: () => {
+                        return $data[atr] = value
+                    },
+                })
+            }
+
+            const regex = /\{\{([\s\w)(,.+*-]*)\}\}/g
+            this.$el.innerHTML = this.$el.innerHTML.replace(regex, (match, $1) => {
+                const value = this[$1.trim()]
+                return value ? value : eval($1)
+            })
+        }
+
+        const vm = new meuFramework({
+            el: "#app",
+            data: {
+                nome: "Maria",
+                sobrenome: 'Silva',
+                age: 19
+            }
+        })
+
+        console.log(vm.nome)
+        console.log(vm.$data.nome)
+
+        vm.nome = 'Pedro'
+        console.log(vm.nome)
+        console.log(vm.$data.nome)
+    </script>
+</body>
+</html>
