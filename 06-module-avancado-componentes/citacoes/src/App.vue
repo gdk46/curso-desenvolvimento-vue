@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
-		<Citacoes />
-		<Sobre />
+		<!-- RENDERIZAÇÃO DE COMPONENT POR DEMANTA -->
+		<component :is="componenteRender"></component>
 	</div>
 </template>
 
@@ -10,7 +10,19 @@ import Citacoes from './components/Citacoes'
 import Sobre from './components/Sobre'
 
 export default {
-	components: { Citacoes, Sobre }
+	components: { Citacoes, Sobre },
+
+	data() {
+		return {
+			componenteRender: 'Sobre'
+		}
+	},
+
+	created() {
+		setTimeout(() => {
+			this.componenteRender = 'Citacoes'
+		}, 3000)
+	}
 }
 </script>
 
